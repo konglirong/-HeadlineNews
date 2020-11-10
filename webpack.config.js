@@ -40,7 +40,7 @@ module.exports = {
                 loader: 'ejs-loader'
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 use: [{
                         loader: miniCssExtractPlugin.loader,
                         options: {
@@ -90,9 +90,6 @@ module.exports = {
                 collapseWhitespace: true
             }
         }),
-        new miniCssExtractPlugin({
-            filename: 'css/[name].css'
-        }),
         new htmlWebpackPlugin({
             filename: 'detail.html',
             template: path.resolve(__dirname, 'src/detail.html'),
@@ -118,15 +115,18 @@ module.exports = {
                 removeComments: true,
                 collapseWhitespace: true
             }
+        }),
+        new miniCssExtractPlugin({
+            filename: 'css/[name].css'
         })
     ],
     //开发服务器的配置
     devServer: {
         watchOptions: {
-            ignored: /\node_modules/
+            ignored: /node_modules/
         },
         open: true,
         host: 'localhost',
-        port: 3000
+        port: 3003
     }
 }
